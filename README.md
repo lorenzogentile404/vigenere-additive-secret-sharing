@@ -4,7 +4,7 @@ A Python script implementing a didactical addittive secret sharing scheme inspir
 
 ## How it works
 
-In order to split the string `s` of length `ł` into `n` shares it is enough to compute `n-1` random strings `s_1,...,s_{n-1}` of length `l`, then compute the last share as `s_n = s - (s_1 + ... + s_{n-1})`, where `+` and `-` operators works as in the Vigenère cipher.
+In order to split the string `s` of length `ł` into `n` shares it is enough to compute `n-1` random shares `s_1,...,s_{n-1}` as strings of length `l`, then compute the last share as `s_n = s - (s_1 + ... + s_{n-1})`, where `+` and `-` operators works as in the Vigenère cipher.
 
 Note that this is equivalent to convert each char of `s` to an element of the addittive group of integers modulo `26` (`Z_26`) according to the alphabetic order `A = 0, B = 1, ..., Z = 25`. Then use addittive secret sharing for each element. Finally, for `i = 1,...,n` convert the share number `i` of each element to char and concat them. The obtained value represents the Vigenère share number `i`.
 
