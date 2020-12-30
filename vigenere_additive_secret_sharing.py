@@ -8,20 +8,9 @@ def print_return(x):
 
 ### Integer section
 
-# Strech integers list
-def stretch(K, l):
-    assert(len(K) < l)
-    streched_K = []
-    for i in range(0,l):
-        streched_K.append(K[i % len(K)])
-    return streched_K
-
 # Sum integers lists
 def sum_int(A, B, is_B_negative = False):
-    if len(B) < len(A):
-        B = stretch(B, len(A))
-    elif len(B) > len(A):
-        A = stretch(A, len(B))
+    assert(len(A) == len(B))
     return [(a + b) % 26 if not is_B_negative else (a - b) % 26 for a,b in zip(A,B)]
 
 # Compute shares of an integer
@@ -34,6 +23,14 @@ def share_int(A, n):
     return [share_single_int(a, n) for a in A]
 
 ### String section
+
+# Strech string
+def stretch(s, l):
+    assert(len(s) < l)
+    streched_s = []
+    for i in range(0,l):
+        streched_s.append(s[i % len(s)])
+    return "".join(streched_s)
 
 def char_to_int(c):
     return ord(c.lower()) - 97
@@ -83,7 +80,13 @@ while True:
     # Syntax for summing and subtracting strings (eventually shares) according to the scheme:
     # [A] + [B] - [C] + ... 
     else:
+        # Parse exp
         EXP = re.split('([+|-])',exp.replace(' ',''))
+        # Compute max length among the strings
+        max_l = max([len(e) for e in EXP if e != '+' and e != '-'  ])
+        # Stretch strings shorter than max length
+        EXP = [stretch(e, max_l) if e != '+' and e != '-' and len(e) < max_l else e for e in EXP]
+        # Compute EXP
         RES = comp_exp(EXP)
         print('Result: ' + str(RES))
 
