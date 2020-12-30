@@ -39,7 +39,7 @@ The following table shows how the scheme works with actual inputs. In this case 
 ```console
 user@host:~/vigenere-additive-secret-sharing$ python vigenere_additive_secret_sharing.py 
 Insert expression: meetmeatdawn + worm
-meetmeatdawn + worm
+meetmeatdawn + wormwormworm
 isvfisrfzonz
 Result: isvfisrfzonz
 ```
@@ -47,8 +47,8 @@ Result: isvfisrfzonz
 ### Decrypt Vigenère
 ```console
 user@host:~/vigenere-additive-secret-sharing$ python vigenere_additive_secret_sharing.py 
-Insert expression: isvfisrfzonz - worm
-isvfisrfzonz - worm
+Insert expression: isvfisrfzonz - worm            
+isvfisrfzonz - wormwormworm
 meetmeatdawn
 Result: meetmeatdawn
 ```
